@@ -15,8 +15,8 @@ const Footer = () => {
       <div className="container px-4 mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
-            <span className="font-bold text-xl">Alex Chen</span>
-            <p className="text-gray-400 mt-2">Computer Science Student</p>
+            <span className="font-bold text-xl">Phemelo Moloi</span>
+            <p className="text-gray-400 mt-2">Computer Science and Software Engineering Student</p>
           </div>
 
           <div className="mt-6 md:mt-0">
@@ -24,7 +24,7 @@ const Footer = () => {
               <a 
                 href="https://github.com/" 
                 target="_blank" 
-                rel="noopener noreferrer" 
+                rel="https://github.com/WyvernPirate" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="GitHub"
               >
@@ -47,7 +47,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Alex Chen. All rights reserved.
+            © {new Date().getFullYear()} Phemelo Moloi. All rights reserved.
           </p>
 
           <div className="mt-4 md:mt-0">

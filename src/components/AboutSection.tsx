@@ -17,7 +17,7 @@ const AboutSection = () => {
           <h2 className="text-3xl font-bold mb-4 text-gray-900">About Me</h2>
           <div className="h-1 w-20 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600">
-            I'm a third-year Computer Science student at University of Technology with a passion for software development and problem-solving.
+            I'm a third-year Computer Science student at Botswana International University of Science and Technology with a passion for software development and problem-solving.
           </p>
         </div>
 
@@ -32,9 +32,9 @@ const AboutSection = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-lg text-gray-900">BSc in Computer Science</h4>
-                  <p className="text-gray-600">University of Technology (2022 - Present)</p>
-                  <p className="mt-2 text-gray-600">Specializing in Software Engineering with a minor in AI/ML</p>
+                  <h4 className="font-semibold text-lg text-gray-900">BSc in Computer Science and Software Engineering</h4>
+                  <p className="text-gray-600">Botswana International University of Science and Technology (2022 - Present)</p>
+                  <p className="mt-2 text-gray-600">Specializing in Software Engineering</p>
                 </div>
               </div>
 
@@ -74,7 +74,7 @@ const AboutSection = () => {
                   I'm driven by the desire to build software that makes a difference. Currently focusing on web development and AI applications, I aim to blend technical excellence with great user experiences.
                 </p>
                 <p className="text-gray-600 mb-6">
-                  My academic interests include algorithm optimization, machine learning, and software architecture. I'm constantly learning and expanding my skill set through projects, coursework, and self-study.
+                  My academic interests include web development, artificial intelligence, machine learning, and software architecture. I'm constantly learning and expanding my skill set through projects, coursework, and self-study.
                 </p>
                 <Button variant="outline" className="mt-4" asChild>
                   <a href="#skills">

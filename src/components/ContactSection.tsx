@@ -37,11 +37,11 @@ const ContactSection = () => {
                 <div>
                   <p className="text-sm text-gray-500 mb-1">Email</p>
                   <a 
-                    href="mailto:alex.chen@example.com" 
+                    href="mailto:moloieric80@gmail.com" 
                     className="text-blue-600 hover:text-blue-800 flex items-center gap-2"
                   >
                     <Mail size={18} />
-                    alex.chen@example.com
+                    moloieric80@gmail.com
                   </a>
                 </div>
                 
@@ -49,7 +49,7 @@ const ContactSection = () => {
                   <p className="text-sm text-gray-500 mb-1">Social Profiles</p>
                   <div className="flex gap-4 mt-2">
                     <a 
-                      href="https://github.com/" 
+                      href="https://github.com/WyvernPirate" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-gray-600 hover:text-blue-600 transition-colors"
@@ -69,7 +69,7 @@ const ContactSection = () => {
 
                 <div>
                   <p className="text-sm text-gray-500 mb-1">Location</p>
-                  <p className="text-gray-700">San Francisco, CA</p>
+                  <p className="text-gray-700">Palapye, Botswana</p>
                 </div>
 
                 <div>

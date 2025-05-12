@@ -10,9 +10,9 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-1/2 md:pr-12">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-900">
-              Hi, I'm <span className="text-blue-600">Alex Chen</span>
+              Hi, I'm <span className="text-blue-600">Phemelo Moloi</span>
               <br />
-              Computer Science Student
+              Software Engineering Student
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-10">
               I'm passionate about software engineering, machine learning, and creating

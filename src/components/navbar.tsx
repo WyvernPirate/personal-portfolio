@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <span className="font-bold text-xl text-blue-600">DevStudent</span>
+            <span className="font-bold text-xl text-blue-600">Phemelo Moloi</span>
           </div>
 
           {/* Desktop Menu */}
