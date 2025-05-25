@@ -5,7 +5,7 @@ import { Github, ExternalLink } from "lucide-react";
 
 const GITHUB_USERNAME = "WyvernPirate";
 const DEFAULT_BRANCH = "main";
-const FALLBACK_IMAGE = "public/fallback.png";
+const FALLBACK_IMAGE = "/fallback.png";
 
 const SELECTED_PROJECTS = [
   { repo: "MediSync-App-Flutter", tags: ["Flutter", "Dart", "Mobile", "Google Maps", "Firebase"] },
