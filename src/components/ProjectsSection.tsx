@@ -5,6 +5,7 @@ import { Github, ExternalLink } from "lucide-react";
 
 const GITHUB_USERNAME = "WyvernPirate";
 const DEFAULT_BRANCH = "main";
+const FALLBACK_IMAGE = "src/images/fallback.png";
 
 const SELECTED_PROJECTS = [
   { repo: "MediSync-App-Flutter", tags: ["Flutter", "Dart", "Mobile", "Google Maps", "Firebase"] },
@@ -84,7 +85,8 @@ const ProjectsSection = () => {
                     alt={project.name}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.currentTarget.style.display = "none";
+                      e.currentTarget.onerror = null; // Prevent infinite loop
+                      e.currentTarget.src = FALLBACK_IMAGE;
                     }}
                   />
                 </div>
