@@ -33,7 +33,7 @@ const Footer = () => {
               <a 
                 href="https://linkedin.com/" 
                 target="_blank" 
-                rel="noopener noreferrer" 
+                rel="https://www.linkedin.com/in/phemelo-moloi-12aa41303" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >

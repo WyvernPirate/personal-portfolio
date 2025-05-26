@@ -57,7 +57,7 @@ const ContactSection = () => {
                       <Github size={24} />
                     </a>
                     <a 
-                      href="https://linkedin.com/" 
+                      href="https://www.linkedin.com/in/phemelo-moloi-12aa41303" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-gray-600 hover:text-blue-600 transition-colors"
