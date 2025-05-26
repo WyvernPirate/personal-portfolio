@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio repository! This project showcases my skills, projects, and experience as a developer. Built primarily with TypeScript, it’s designed to be clean, modern, and responsive.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Built with TypeScript
+- Responsive design for all devices
+- Project showcase with live links
+- About/Bio section
+- Contact form or contact information
+- [Add any additional features here]
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```plaintext
+src/
+  components/      # Reusable UI components
+  pages/           # Main pages (Home, Projects, About, Contact)
+  styles/          # Global and component styles
+  ...
+public/
+  assets/          # Images and static files
+README.md
+...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Technologies Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- TypeScript
+- [React/Vue/Other—specify your framework]
+- CSS/SCSS
+- [Any additional libraries or tools]
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🚧 Installation & Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/WyvernPirate/personal-portfolio.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd personal-portfolio
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open your browser and go to `http://localhost:3000`
+
+## ✨ Live Demo
+
+Check out the live portfolio here:  
+[https://personal-portfolio-1e659.web.app/](https://personal-portfolio-1e659.web.app/)
+
+## 👤 Contact
+
+- Email: moloieric80@gmail.com
+- LinkedIn: [www.linkedin.com/in/phemelo-moloi-12aa41303](https://www.linkedin.com/in/phemelo-moloi-12aa41303)
+- Instagram: [eric_moloi_](https://instagram.com/eric_moloi_)
