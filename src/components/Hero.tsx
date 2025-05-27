@@ -33,8 +33,8 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-600/10 rounded-full blur-3xl transform -translate-x-10"></div>
               <img 
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80" 
-                alt="Student working on laptop" 
+                src="https://github.com/WyvernPirate/personal-portfolio/blob/main/public/profile_pic.jpg" 
+                alt="My Profile Pic" 
                 className="relative z-10 mx-auto rounded-lg shadow-xl"
               />
             </div>
