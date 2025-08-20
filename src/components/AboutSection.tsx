@@ -17,7 +17,7 @@ const AboutSection = () => {
           <h2 className="text-3xl font-bold mb-4 text-gray-900">About Me</h2>
           <div className="h-1 w-20 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600">
-            I'm a third-year Computer Science student at Botswana International University of Science and Technology with a passion for software development and problem-solving.
+            I'm a final-year Computer Science student at Botswana International University of Science and Technology with a passion for software development and problem-solving.
           </p>
         </div>
 
@@ -41,13 +41,26 @@ const AboutSection = () => {
               <div className="flex gap-4">
                 <div className="flex-shrink-0 mt-1">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                    <Code size={24} />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg text-gray-900">Full-Stack Development Intern</h4>
+                  <p className="text-gray-600">CodVeda Technologies (Aug 2025 - Present)</p>
+                  <p className="mt-2 text-gray-600">Gaining hands-on experience in full-stack development, working with modern web technologies to build and deploy scalable applications.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 mt-1">
+                  <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
                     <Book size={24} />
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-lg text-gray-900">Web Development Bootcamp</h4>
-                  <p className="text-gray-600">CodeCamp Academy (Summer 2023)</p>
-                  <p className="mt-2 text-gray-600">Completed intensive 12-week full-stack development program</p>
+                  <h4 className="font-semibold text-lg text-gray-900">Information Management Attache</h4>
+                  <p className="text-gray-600">Debswana Diamond Company (Jun 2025 - Jul 2025)</p>
+                  <p className="mt-2 text-gray-600">Completed a 2-month internship, contributing to internal IT projects and gaining valuable industry experience.</p>
                 </div>
               </div>
 
