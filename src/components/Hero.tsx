@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-slate-50">
+    <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-white to-slate-50">
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center">
-          <div className="md:w-1/2 md:pr-12">
+        <div className="flex flex-col md:flex-row md:items-start">
+          <div className="md:w-3/5 md:pr-12">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-900">
               Hi, I'm <span className="text-blue-600">Phemelo Moloi</span>
               <br />
@@ -27,7 +27,7 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-          <div className="md:w-1/2 mt-12 md:mt-0">
+          <div className="md:w-2/5 mt-12 md:mt-0">
             <div className="relative">
               <div className="absolute inset-0 bg-blue-600/10 rounded-full blur-3xl transform -translate-x-10"></div>
               <img 
