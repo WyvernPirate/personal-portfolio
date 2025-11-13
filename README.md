@@ -61,4 +61,4 @@ Check out the live portfolio here:
 
 - Email: moloieric80@gmail.com
 - LinkedIn: [www.linkedin.com/in/phemelo-moloi-12aa41303](https://www.linkedin.com/in/phemelo-moloi-12aa41303)
-- Instagram: [eric_moloi_](https://instagram.com/eric_moloi_)
+- Instagram: [chalant_dreads](https://instagram.com/chalant_dreads)
