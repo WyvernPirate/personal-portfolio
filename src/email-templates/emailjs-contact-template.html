@@ -1,0 +1,42 @@
+<!-- HTML version -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>New contact from {{from_name}}</title>
+    <style>
+      /* Inline/basic styles for wide compatibility */
+      body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: #0f172a; margin: 0; padding: 0; }
+      .container { max-width: 680px; margin: 24px auto; padding: 24px; background: #ffffff; border-radius: 8px; border: 1px solid #e6edf3; }
+      .header { display:flex; align-items:center; gap:12px; }
+      .brand { font-weight:700; font-size:18px; color:#0b5cff; }
+      .meta { margin-top:12px; color:#475569; font-size:13px; }
+      .label { font-weight:600; color:#0f172a; margin-top:16px; }
+      .message { white-space:pre-wrap; margin-top:8px; color:#0f172a; line-height:1.6; }
+      .footer { margin-top:24px; color:#94a3b8; font-size:12px; }
+      .card { background:#f8fafc; padding:12px; border-radius:6px; border:1px solid #eef2f7; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="brand">Your Name / Website</div>
+      </div>
+
+      <div class="meta">You have a new message sent from the contact form.</div>
+
+      <div class="label">Sender</div>
+      <div class="card">
+        <div><strong>Name:</strong> {{from_name}}</div>
+        <div><strong>Email:</strong> <a href="mailto:{{reply_to}}">{{reply_to}}</a></div>
+        <div><strong>Subject:</strong> {{subject}}</div>
+      </div>
+
+      <div class="label">Message</div>
+      <div class="message">{{message}}</div>
+
+      <div class="footer">This message was sent via your website contact form.</div>
+    </div>
+  </body>
+</html>
