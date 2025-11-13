@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .env
 storage.rules
+
+#hosting files
+hosting.*
