@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="mt-6 md:mt-0">
             <div className="flex space-x-4">
               <a 
-                href="https://github.com/" 
+                href="https://github.com/WyvernPirate" 
                 target="_blank" 
                 rel="https://github.com/WyvernPirate" 
                 className="text-gray-400 hover:text-white transition-colors"
@@ -31,7 +31,7 @@ const Footer = () => {
                 <Github size={20} />
               </a>
               <a 
-                href="https://linkedin.com/" 
+                href="https://linkedin.com/phemelo-moloi-12aa41303" 
                 target="_blank" 
                 rel="https://www.linkedin.com/in/phemelo-moloi-12aa41303" 
                 className="text-gray-400 hover:text-white transition-colors"
