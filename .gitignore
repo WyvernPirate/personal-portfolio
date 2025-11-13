@@ -26,4 +26,7 @@ dist-ssr
 storage.rules
 
 #hosting files
-hosting.*
+.firebase
+.firebase/*.cache
+hosting.cache
+hosting.*.cache
