@@ -64,8 +64,8 @@ const AboutSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg text-gray-900">Full-Stack Development Intern</h4>
-                  <p className="text-gray-600">CodVeda Technologies (Aug 2025 - Present)</p>
-                  <p className="mt-2 text-gray-600">Gaining hands-on experience in full-stack development, working with modern web technologies to build and deploy scalable applications.</p>
+                  <p className="text-gray-600">CodVeda Technologies (Aug 2025 - Oct 2025)</p>
+                  <p className="mt-2 text-gray-600">Gained hands-on experience in full-stack development, worked with modern web technologies to build and deploy scalable applications.</p>
                 </div>
               </div>
 
@@ -89,9 +89,9 @@ const AboutSection = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-lg text-gray-900">Open Source Contributor</h4>
-                  <p className="text-gray-600">Various Projects (2022 - Present)</p>
-                  <p className="mt-2 text-gray-600">Contributing to open-source projects in my spare time</p>
+                  <h4 className="font-semibold text-lg text-gray-900">Club President</h4>
+                  <p className="text-gray-600">Biust Innovation Club(Aug 2025 - Present)</p>
+                  <p className="mt-2 text-gray-600">Manage the club and organize events to promote innovation and collaboration among members.</p>
                 </div>
               </div>
             </div>
