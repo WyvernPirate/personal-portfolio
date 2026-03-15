@@ -24,25 +24,27 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    <section id="skills" className="py-16 md:py-24">
       <div className="container px-4 mx-auto">
-        <div className="max-w-3xl mx-auto mb-16 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-gray-900">Skills & Expertise</h2>
-          <div className="h-1 w-20 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600">
+        <div className="mb-10">
+          <span className="chapter-label">Chapter 02 / Capability Map</span>
+          <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">Skills & Expertise</h2>
+          <p className="mt-4 max-w-3xl text-base text-muted-foreground md:text-lg">
             Here are the technologies and tools I've been working with during my studies and personal projects.
           </p>
         </div>
 
+        <div className="editorial-divider mb-10" />
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-semibold mb-8 text-gray-900">Technical Skills</h3>
+          <div className="surface-panel p-6">
+            <h3 className="mb-8 text-2xl font-semibold text-foreground">Technical Skills</h3>
             <div className="space-y-6">
               {technicalSkills.map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between mb-2">
-                    <span className="font-medium text-gray-700">{skill.name}</span>
-                    <span className="text-sm text-gray-500">{skill.level}%</span>
+                    <span className="font-medium text-foreground">{skill.name}</span>
+                    <span className="font-mono text-sm text-muted-foreground">{skill.level}%</span>
                   </div>
                   <Progress value={skill.level} className="h-2" />
                 </div>
@@ -50,26 +52,26 @@ const SkillsSection = () => {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-semibold mb-8 text-gray-900">Other Skills & Knowledge</h3>
+          <div className="surface-panel p-6">
+            <h3 className="mb-8 text-2xl font-semibold text-foreground">Other Skills & Knowledge</h3>
             <div className="grid grid-cols-2 gap-4">
               {otherSkills.map((skill) => (
                 <div 
                   key={skill} 
-                  className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"
+                  className="rounded-lg border border-border/80 bg-secondary/35 p-4 transition-colors hover:border-primary/35 hover:bg-secondary/70"
                 >
-                  <span className="text-gray-800 font-medium">{skill}</span>
+                  <span className="font-medium text-foreground">{skill}</span>
                 </div>
               ))}
             </div>
 
             <div className="mt-10">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Currently Learning</h3>
+              <h3 className="mb-4 text-2xl font-semibold text-foreground">Currently Learning</h3>
               <div className="flex flex-wrap gap-2">
                 {["GraphQL", "AWS", "React Native", "TensorFlow"].map((item) => (
                   <span 
                     key={item}
-                    className="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-sm"
+                    className="rounded-md border border-primary/30 bg-primary/12 px-3 py-1 text-xs font-medium uppercase tracking-[0.08em] text-primary"
                   >
                     {item}
                   </span>
