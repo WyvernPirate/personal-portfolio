@@ -63,9 +63,9 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="py-16 md:py-24" data-reveal>
       <div className="container px-4 mx-auto">
-        <div className="mb-10">
+        <div className="mb-10" data-reveal>
           <span className="chapter-label">Chapter 04 / Contact</span>
           <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">Get In Touch</h2>
           <p className="mt-4 max-w-3xl text-base text-muted-foreground md:text-lg">
@@ -75,7 +75,7 @@ const ContactSection = () => {
 
         <div className="editorial-divider mb-10" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-5xl mx-auto" data-reveal style={{ "--reveal-delay": "60ms" } as React.CSSProperties}>
           <div className="lg:col-span-2">
             <div className="surface-panel h-full p-6">
               <h3 className="mb-6 text-xl font-semibold text-foreground">Contact Information</h3>
@@ -93,13 +93,13 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
-                                  <p className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Social Profiles</p>
+                  <p className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Social Profiles</p>
                   <div className="flex gap-4 mt-2">
                     <a 
                       href="https://github.com/WyvernPirate" 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                                      className="text-muted-foreground transition-colors hover:text-primary"
+                      className="text-muted-foreground transition-colors hover:text-primary"
                     >
                       <Github size={24} />
                     </a>

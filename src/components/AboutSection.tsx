@@ -11,9 +11,9 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-16 md:py-24">
+    <section id="about" className="py-16 md:py-24" data-reveal>
       <div className="container px-4 mx-auto">
-        <div className="mb-10">
+        <div className="mb-10" data-reveal>
           <span className="chapter-label">Chapter 01 / About</span>
           <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">Context and trajectory</h2>
           <p className="mt-4 max-w-3xl text-muted-foreground">
@@ -24,7 +24,7 @@ const AboutSection = () => {
 
         <div className="editorial-divider mb-10" />
 
-        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2" data-reveal style={{ "--reveal-delay": "60ms" } as React.CSSProperties}>
           <div>
             <div className="mb-8 text-left">
               <h3 className="text-2xl font-semibold text-foreground">About Me</h3>
