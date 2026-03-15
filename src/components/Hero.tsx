@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden pb-20 pt-16 md:pb-28 md:pt-24">
+    <section className="relative overflow-hidden pb-20 pt-16 md:pb-28 md:pt-24" data-reveal>
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-60">
         <div className="absolute -top-28 left-[-10%] h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
         <div className="absolute right-[-8%] top-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
@@ -11,9 +11,9 @@ const Hero = () => {
 
       <div className="container mx-auto px-4">
         <div className="surface-panel grid gap-12 overflow-hidden p-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:p-12">
-          <div className="animate-fade-up">
+          <div data-reveal>
             <span className="chapter-label">Chapter 00 / Overview</span>
-            <h1 className="mt-6 text-4xl font-bold leading-tight text-foreground md:text-6xl">
+            <h1 className="terminal-title typing-caret mt-6 text-3xl font-bold leading-tight text-foreground md:text-5xl">
               Building useful software,
               <br />
               <span className="text-primary">one intentional system at a time.</span>
@@ -43,7 +43,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="animate-fade-up space-y-6" style={{ animationDelay: "100ms" }}>
+          <div className="space-y-6" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
             <div className="surface-panel relative overflow-hidden border-primary/25 p-5">
               <div className="pointer-events-none absolute left-0 top-0 h-[1px] w-full bg-primary/35" />
               <img
