@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -18,6 +20,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				heading: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
+				body: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
+				mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -84,13 +91,28 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-up': {
+					from: { opacity: '0', transform: 'translateY(14px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
+				},
+				'soft-pulse': {
+					'0%, 100%': { opacity: '0.6' },
+					'50%': { opacity: '1' }
+				},
+				'scanline': {
+					from: { transform: 'translateY(-100%)' },
+					to: { transform: 'translateY(200%)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-up': 'fade-up 0.55s ease-out both',
+				'soft-pulse': 'soft-pulse 3.2s ease-in-out infinite',
+				'scanline': 'scanline 5.6s linear infinite'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;
