@@ -24,9 +24,9 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-16 md:py-24">
+    <section id="skills" className="py-16 md:py-24" data-reveal>
       <div className="container px-4 mx-auto">
-        <div className="mb-10">
+        <div className="mb-10" data-reveal>
           <span className="chapter-label">Chapter 02 / Capability Map</span>
           <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">Skills & Expertise</h2>
           <p className="mt-4 max-w-3xl text-base text-muted-foreground md:text-lg">
@@ -36,7 +36,7 @@ const SkillsSection = () => {
 
         <div className="editorial-divider mb-10" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" data-reveal style={{ "--reveal-delay": "60ms" } as React.CSSProperties}>
           <div className="surface-panel p-6">
             <h3 className="mb-8 text-2xl font-semibold text-foreground">Technical Skills</h3>
             <div className="space-y-6">
