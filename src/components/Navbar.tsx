@@ -3,6 +3,13 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
+const sections = [
+  { index: "01", name: "About", href: "#about" },
+  { index: "02", name: "Skills", href: "#skills" },
+  { index: "03", name: "Projects", href: "#projects" },
+  { index: "04", name: "Contact", href: "#contact" },
+];
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
@@ -10,13 +17,6 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
-  const sections = [
-    { index: "01", name: "About", href: "#about" },
-    { index: "02", name: "Skills", href: "#skills" },
-    { index: "03", name: "Projects", href: "#projects" },
-    { index: "04", name: "Contact", href: "#contact" },
-  ];
-
   React.useEffect(() => {
     const sectionIds = sections.map((section) => section.href.slice(1));
 
