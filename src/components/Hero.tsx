@@ -1,70 +1,94 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import React from "react";
+import TerminalCommand from "@/components/TerminalCommand";
+
+const TYPE_TARGET =
+  "Final-year software engineering student building reliable web systems, ML-assisted workflows, and production-focused tools.";
 
 const Hero = () => {
+  const [typedText, setTypedText] = React.useState("");
+
+  React.useEffect(() => {
+    let index = 0;
+    const interval = window.setInterval(() => {
+      index += 1;
+      setTypedText(TYPE_TARGET.slice(0, index));
+      if (index >= TYPE_TARGET.length) {
+        window.clearInterval(interval);
+      }
+    }, 22);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const floatVars = React.useMemo(
+    () => ({
+      "--float-duration": `${3.6 + Math.random() * 2.4}s`,
+      "--float-delay": `${Math.random() * 0.9}s`,
+      "--float-x": `${4 + Math.random() * 9}px`,
+      "--float-y": `${-7 - Math.random() * 13}px`,
+      "--float-rotate": `${(Math.random() * 2.4).toFixed(1)}deg`,
+    }),
+    []
+  ) as React.CSSProperties;
+
   return (
-    <section className="relative overflow-hidden pb-20 pt-16 md:pb-28 md:pt-24" data-reveal>
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-60">
-        <div className="absolute -top-28 left-[-10%] h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute right-[-8%] top-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
-      </div>
+    <section className="px-5 pb-8 pt-4 md:px-8 md:pb-10">
+      <div>
+        <div className="mt-1 max-w-4xl text-sm leading-7 text-foreground">
+          {typedText}
+          <span className="typing-caret" />
+        </div>
 
-      <div className="container mx-auto px-4">
-        <div className="surface-panel grid gap-12 overflow-hidden p-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:p-12">
-          <div data-reveal>
-            <span className="chapter-label">Chapter 00 / Overview</span>
-            <h1 className="terminal-title typing-caret mt-6 text-3xl font-bold leading-tight text-foreground md:text-5xl">
-              Building useful software,
-              <br />
-              <span className="text-primary">one intentional system at a time.</span>
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              I&apos;m Phemelo Moloi, a software engineering student focused on production-grade
-              web apps, AI-assisted workflows, and clear technical communication. This site is a
-              curated index of my projects, skills, and current learning path.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="font-mono">Status: Open to internships</span>
-              <span className="h-1 w-1 rounded-full bg-primary/80" />
-              <span className="font-mono">Location: Botswana</span>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild>
-                <a href="#projects">
-                  View My Projects <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a href="#contact">Contact Me</a>
-              </Button>
-            </div>
-          </div>
-
-          <div className="space-y-6" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-            <div className="surface-panel relative overflow-hidden border-primary/25 p-5">
-              <div className="pointer-events-none absolute left-0 top-0 h-[1px] w-full bg-primary/35" />
-              <img
-                src="/profile_pic.jpg"
-                alt="My Profile Pic"
-                className="h-full w-full rounded-xl border border-border/70 object-cover"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <div className="surface-panel p-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                  Focus
-                </p>
-                <p className="mt-2 text-sm text-foreground">Full-stack engineering</p>
+        <div className="mt-4 overflow-x-auto pb-2">
+          <div className="flex min-w-[760px] flex-nowrap items-start gap-6">
+            <div className="w-[300px] shrink-0 font-mono text-[8px] leading-[1] text-primary/80 select-none">
+              <pre>
+{`
+ __      ____     ____   _ ______ _____  _   _ 
+ \ \    / /\ \   / / \ | |  ____|  __ \| \ | |
+  \ \  / /  \ \_/ /|  \| | |__  | |__) |  \| |
+   \ \/ /    \   / | . \` |  __| |  _  /| . \` |
+    \  /      | |  | |\  | |____| | \ \| |\  |
+     \/       |_|  |_| \_|______|_|  \_|_| \_|
+`}
+              </pre>
+              <div className="mt-4 random-float rounded-none border border-primary/45 bg-background/40 p-2" style={floatVars}>
+                <img
+                  src="/profile_pic.jpg"
+                  alt="Phemelo Moloi"
+                  className="h-[180px] w-full border border-border/70 object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
               </div>
-              <div className="surface-panel p-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                  Domain
-                </p>
-                <p className="mt-2 text-sm text-foreground">ML + web systems</p>
+              <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground">ID: wyvern@arch_v2</p>
+            </div>
+
+            <div className="min-w-[520px] flex-1 pt-1">
+              <div className="grid grid-cols-[120px_minmax(0,1fr)] gap-x-4 gap-y-1.5 font-mono text-sm leading-7 text-foreground">
+                <span className="text-primary">User</span>
+                <span>phemelo@portfolio</span>
+                <span className="text-primary">Role</span>
+                <span>Software Engineering Student</span>
+                <span className="text-primary">Focus</span>
+                <span>Full-stack web development + ML systems</span>
+                <span className="text-primary">Stack</span>
+                <span>TypeScript, React, Node.js, Python, Firebase</span>
+                <span className="text-primary">Status</span>
+                <span>Open to internships and collaborations</span>
+                <span className="text-primary">Location</span>
+                <span>Palapye, Botswana</span>
+              </div>
+
+              <div className="mt-6 space-y-1">
+                <a href="#projects" className="terminal-command block transition-colors hover:text-cyan-200">
+                  <span className="terminal-prompt">$</span>
+                  <span className="terminal-cmd">cd</span>
+                  <span className="terminal-args"> ~/portfolio/projects</span>
+                </a>
+                <a href="#contact" className="terminal-command block transition-colors hover:text-cyan-200">
+                  <span className="terminal-prompt">$</span>
+                  <span className="terminal-cmd">mail</span>
+                  <span className="terminal-args"> phemelo@portfolio.dev</span>
+                </a>
               </div>
             </div>
           </div>
