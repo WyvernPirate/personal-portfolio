@@ -21,15 +21,23 @@ const Navbar = () => {
     const sectionIds = sections.map((section) => section.href.slice(1));
 
     const onScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.33;
+      // Use a smaller offset for more precise activation
+      const scrollPosition = window.scrollY + 100;
 
-      let current = sectionIds[0];
-      sectionIds.forEach((id) => {
+      let current = activeSection;
+      
+      // Determine which section is currently in view
+      for (const id of sectionIds) {
         const section = document.getElementById(id);
-        if (section && scrollPosition >= section.offsetTop) {
-          current = id;
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          // If the top of the section is near the top of the viewport
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            current = id;
+            break;
+          }
         }
-      });
+      }
 
       setActiveSection(current);
 
@@ -44,41 +52,50 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-xl">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="chapter-label">Portfolio.log</span>
-            <span className="hidden text-xs uppercase tracking-[0.25em] text-muted-foreground md:inline">
-              Phemelo Moloi
-            </span>
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-primary/20 bg-background/90 backdrop-blur-md">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-10">
+          <div className="flex items-center h-full">
+            <div className="bg-primary px-3 h-full flex items-center text-primary-foreground font-bold text-[10px] uppercase tracking-tighter mr-2">
+              PORTAL [0]
+            </div>
+            <div className="flex items-center gap-1 h-full px-2 border-r border-primary/10">
+              {sections.map((section) => (
+                <a
+                  key={section.name}
+                  href={section.href}
+                  className={cn(
+                    "px-3 h-full flex items-center text-[10px] font-mono transition-all",
+                    activeSection === section.href.slice(1)
+                      ? "bg-primary/20 text-primary border-b-2 border-primary"
+                      : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                  )}
+                >
+                  {section.index}:{section.name.toLocaleLowerCase()}*
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="hidden md:flex md:items-center md:gap-7">
-            {sections.map((section) => (
-              <a
-                key={section.name}
-                href={section.href}
-                className={cn(
-                  "group inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] transition-colors",
-                  activeSection === section.href.slice(1)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
-                )}
-              >
-                <span className="font-mono text-[11px] text-primary/80">{section.index}</span>
-                {section.name}
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-4 h-full font-mono text-[10px]">
+            <div className="text-emerald-400">
+               <span className="opacity-50 font-sans">CPU:</span> 12.4%
+            </div>
+            <div className="text-cyan-400 border-l border-primary/10 pl-4 h-full flex items-center">
+               <span className="opacity-50 font-sans">MEM:</span> 4.2G / 16G
+            </div>
+            <div className="text-primary border-x border-primary/10 px-4 h-full flex items-center bg-primary/5">
+              {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            </div>
           </div>
 
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="rounded-md border border-border/80 p-2 text-foreground transition-colors hover:border-primary/60 hover:text-primary"
+              className="text-primary hover:bg-primary/10 p-1"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
