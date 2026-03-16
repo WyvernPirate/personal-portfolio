@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import TerminalCommand from "@/components/TerminalCommand";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -63,119 +64,126 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24" data-reveal>
-      <div className="container px-4 mx-auto">
-        <div className="mb-10" data-reveal>
-          <span className="chapter-label">Chapter 04 / Contact</span>
-          <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">Get In Touch</h2>
-          <p className="mt-4 max-w-3xl text-base text-muted-foreground md:text-lg">
-            Have a question or want to work together? Feel free to reach out!
-          </p>
-        </div>
+    <section id="contact" className="px-5 pb-8 pt-4 md:px-8 md:pb-10">
+      <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
+        Direct communication channels for recruitment, collaboration, or system inquiries.
+      </p>
 
-        <div className="editorial-divider mb-10" />
+      <div className="editorial-divider my-6 opacity-40" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-5xl mx-auto" data-reveal style={{ "--reveal-delay": "60ms" } as React.CSSProperties}>
-          <div className="lg:col-span-2">
-            <div className="surface-panel h-full p-6">
-              <h3 className="mb-6 text-xl font-semibold text-foreground">Contact Information</h3>
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
+          <div className="lg:col-span-2 border-l-2 border-primary/20 pl-6 py-2">
+            <h3 className="mb-6 text-xl font-semibold text-primary/90 uppercase tracking-widest glitch-text">09. Channels</h3>
+            
+            <div className="space-y-6">
+              <div>
+                <p className="mb-1 text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Mailto</p>
+                <a 
+                  href="mailto:moloieric80@gmail.com" 
+                  className="flex items-center gap-2 text-primary transition-colors hover:text-cyan-200"
+                >
+                  <Mail size={16} />
+                  <span className="text-sm">moloieric80@gmail.com</span>
+                </a>
+              </div>
               
-              <div className="space-y-6">
-                <div>
-                  <p className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Email</p>
+              <div>
+                <p className="mb-1 text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Network</p>
+                <div className="flex gap-4 mt-2">
                   <a 
-                    href="mailto:moloieric80@gmail.com" 
-                    className="flex items-center gap-2 text-primary transition-colors hover:text-cyan-200"
+                    href="https://github.com/WyvernPirate" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-muted-foreground transition-colors hover:text-primary"
                   >
-                    <Mail size={18} />
-                    moloieric80@gmail.com
+                    <Github size={20} />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/phemelo-moloi-12aa41303" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <Linkedin size={20} />
                   </a>
                 </div>
-                
-                <div>
-                  <p className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Social Profiles</p>
-                  <div className="flex gap-4 mt-2">
-                    <a 
-                      href="https://github.com/WyvernPirate" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      <Github size={24} />
-                    </a>
-                    <a 
-                      href="https://www.linkedin.com/in/phemelo-moloi-12aa41303" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      <Linkedin size={24} />
-                    </a>
-                  </div>
-                </div>
+              </div>
 
-                <div>
-                  <p className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Location</p>
-                  <p className="text-foreground">Palapye, Botswana</p>
-                </div>
+              <div>
+                <p className="mb-1 text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Base Location</p>
+                <p className="text-sm text-foreground">Palapye, Botswana / Remote</p>
+              </div>
 
-                <div>
-                  <p className="mb-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Availability</p>
-                  <p className="text-foreground">Open for part-time opportunities and internships</p>
-                </div>
+              <div>
+                <p className="mb-1 text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Status</p>
+                <p className="text-sm text-foreground">Listening for opportunities</p>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-3">
-            <form ref={formRef} onSubmit={handleSubmit} className="surface-panel p-6">
-              <h3 className="mb-6 text-xl font-semibold text-foreground">Send a Message</h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label htmlFor="name" className="mb-1 block text-sm font-medium text-muted-foreground">
-                    Name
+            <h3 className="mb-6 text-xl font-semibold text-primary/90 uppercase tracking-widest glitch-text">10. Push Message</h3>
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label htmlFor="name" className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    ident: name
                   </label>
-                  <Input id="name" name="from_name" placeholder="Your name" required />
+                  <Input 
+                    id="name" 
+                    name="from_name" 
+                    placeholder="Enter identity..." 
+                    required 
+                    className="h-9 rounded-none border-primary/20 bg-primary/5 focus-visible:ring-primary/40"
+                  />
                 </div>
-                <div>
-                  <label htmlFor="email" className="mb-1 block text-sm font-medium text-muted-foreground">
-                    Email
+                <div className="space-y-1">
+                  <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    ident: email
                   </label>
-                  <Input id="email" name="reply_to" type="email" placeholder="Your email" required />
+                  <Input 
+                    id="email" 
+                    name="reply_to" 
+                    type="email" 
+                    placeholder="Enter return path..." 
+                    required 
+                    className="h-9 rounded-none border-primary/20 bg-primary/5 focus-visible:ring-primary/40"
+                  />
                 </div>
               </div>
 
-              <div className="mb-4">
-                <label htmlFor="subject" className="mb-1 block text-sm font-medium text-muted-foreground">
-                  Subject
+              <div className="space-y-1">
+                <label htmlFor="subject" className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  ident: subject
                 </label>
-                <Input id="subject" name="subject" placeholder="Subject of your message" required />
+                <Input 
+                  id="subject" 
+                  name="subject" 
+                  placeholder="Enter message header..." 
+                  required 
+                  className="h-9 rounded-none border-primary/20 bg-primary/5 focus-visible:ring-primary/40"
+                />
               </div>
 
-              <div className="mb-6">
-                <label htmlFor="message" className="mb-1 block text-sm font-medium text-muted-foreground">
-                  Message
+              <div className="space-y-1">
+                <label htmlFor="message" className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  ident: buffer
                 </label>
                 <Textarea
                   id="message"
                   name="message"
-                  placeholder="Write your message here..."
-                  rows={5}
+                  placeholder="Write to buffer..."
+                  rows={4}
                   required
+                  className="rounded-none border-primary/20 bg-primary/5 focus-visible:ring-primary/40"
                 />
               </div>
 
-              <Button type="submit" disabled={isSending} className="w-full">
-                {isSending ? "Sending..." : (
-                  <>
-                    Send Message <Send size={16} className="ml-2" />
-                  </>
-                )}
+              <Button type="submit" disabled={isSending} className="w-full rounded-none border border-primary/30 bg-primary/10 font-mono text-primary transition-all hover:bg-primary/20">
+                {isSending ? "transmitting..." : "sh ./send_message.sh"}
               </Button>
             </form>
           </div>
-        </div>
       </div>
     </section>
   );
