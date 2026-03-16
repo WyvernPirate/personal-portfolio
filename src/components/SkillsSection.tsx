@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Progress } from "@/components/ui/progress";
+import TerminalCommand from "@/components/TerminalCommand";
 
 const SkillsSection = () => {
   const technicalSkills = [
@@ -13,65 +14,56 @@ const SkillsSection = () => {
   ];
 
   const otherSkills = [
-    "Git & Version Control",
-    "RESTful API Design",
-    "Docker",
-    "CI/CD",
-    "Unit Testing",
-    "Responsive Design",
-    "UI/UX Principles",
-    "Agile Development"
+    "Git", "Docker", "RESTful API", "CI/CD",
+    "Unit Testing", "UI/UX", "Agile", "Linux"
   ];
 
   return (
-    <section id="skills" className="py-16 md:py-24" data-reveal>
-      <div className="container px-4 mx-auto">
-        <div className="mb-10" data-reveal>
-          <span className="chapter-label">Chapter 02 / Capability Map</span>
-          <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">Skills & Expertise</h2>
-          <p className="mt-4 max-w-3xl text-base text-muted-foreground md:text-lg">
-            Here are the technologies and tools I've been working with during my studies and personal projects.
-          </p>
-        </div>
+    <section id="skills" className="px-5 pb-8 pt-4 md:px-8 md:pb-10">
+      <p className="max-w-3xl text-sm text-muted-foreground mt-2">
+        Core technical stack and supplemental tools identified in current profile.
+      </p>
 
-        <div className="editorial-divider mb-10" />
+      <div className="editorial-divider my-6 opacity-40" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" data-reveal style={{ "--reveal-delay": "60ms" } as React.CSSProperties}>
-          <div className="surface-panel p-6">
-            <h3 className="mb-8 text-2xl font-semibold text-foreground">Technical Skills</h3>
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <div>
+            <h3 className="mb-8 text-xl font-semibold text-primary/90 uppercase tracking-wider glitch-text">03. Tech Stack</h3>
             <div className="space-y-6">
               {technicalSkills.map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between mb-2">
-                    <span className="font-medium text-foreground">{skill.name}</span>
-                    <span className="font-mono text-sm text-muted-foreground">{skill.level}%</span>
+                    <span className="font-medium text-foreground text-sm">{skill.name}</span>
+                    <span className="font-mono text-[10px] text-muted-foreground">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-2" />
+                  <Progress value={skill.level} className="h-1.5 bg-primary/10" />
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="surface-panel p-6">
-            <h3 className="mb-8 text-2xl font-semibold text-foreground">Other Skills & Knowledge</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {otherSkills.map((skill) => (
-                <div 
-                  key={skill} 
-                  className="rounded-lg border border-border/80 bg-secondary/35 p-4 transition-colors hover:border-primary/35 hover:bg-secondary/70"
-                >
-                  <span className="font-medium text-foreground">{skill}</span>
-                </div>
-              ))}
+          <div className="space-y-10">
+            <div>
+              <h3 className="mb-6 text-xl font-semibold text-primary/90 uppercase tracking-wider glitch-text">04. Toolchain</h3>
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                {otherSkills.map((skill) => (
+                  <div 
+                    key={skill} 
+                    className="rounded border border-primary/10 bg-primary/5 p-2 text-center transition-colors hover:border-primary/30"
+                  >
+                    <span className="font-mono text-[11px] text-foreground">{skill}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-10">
-              <h3 className="mb-4 text-2xl font-semibold text-foreground">Currently Learning</h3>
+            <div>
+              <h3 className="mb-4 text-xl font-semibold text-primary/90 uppercase tracking-wider glitch-text">05. Active Learning</h3>
               <div className="flex flex-wrap gap-2">
-                {["GraphQL", "AWS", "React Native", "TensorFlow"].map((item) => (
+                {["GraphQL", "AWS", "TensorFlow", "Kubernetes"].map((item) => (
                   <span 
                     key={item}
-                    className="rounded-md border border-primary/30 bg-primary/12 px-3 py-1 text-xs font-medium uppercase tracking-[0.08em] text-primary"
+                    className="rounded border border-primary/30 bg-primary/12 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary"
                   >
                     {item}
                   </span>
@@ -79,7 +71,6 @@ const SkillsSection = () => {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );
