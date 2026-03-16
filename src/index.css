@@ -88,7 +88,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+    font-family: "JetBrains Mono", "Cascadia Code", monospace;
     background-image:
       radial-gradient(1200px 520px at 0% -10%, hsl(var(--primary) / 0.16), transparent 60%),
       radial-gradient(1000px 480px at 100% 0%, hsl(195 76% 42% / 0.1), transparent 62%),
@@ -124,7 +124,36 @@
   }
 
   .surface-panel {
-    @apply rounded-2xl border border-border/80 bg-card/85 shadow-[0_20px_60px_-45px_rgba(0,0,0,0.9)] backdrop-blur;
+    @apply rounded-2xl border border-border/80 bg-card/85 backdrop-blur;
+    box-shadow: 0 20px 60px -45px rgba(0, 0, 0, 0.9);
+  }
+
+  .hypr-window {
+    @apply overflow-hidden rounded-2xl border border-border/80 bg-card/85 backdrop-blur;
+    box-shadow: 0 26px 80px -55px rgba(0, 0, 0, 1);
+  }
+
+  .hypr-titlebar {
+    @apply flex items-center justify-between border-b border-border/80 bg-secondary/45 px-4 py-2;
+  }
+
+  .hypr-dots {
+    @apply inline-flex items-center gap-1.5;
+  }
+
+  .hypr-dot {
+    @apply h-2.5 w-2.5 rounded-full;
+  }
+
+  .hypr-workspace-chip {
+    @apply rounded-md border border-border/80 bg-background/55 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary;
+  }
+
+  .hypr-grid {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
 
   .grid-noise {
@@ -149,6 +178,86 @@
     animation: caret-blink 1s steps(1, end) infinite;
   }
 
+  .terminal-block {
+    @apply rounded-lg border border-border/80 bg-background/45 p-4 font-mono text-xs text-muted-foreground;
+  }
+
+  .status-pill {
+    @apply rounded-full border border-primary/35 bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-primary;
+  }
+
+  .random-float {
+    animation: random-float var(--float-duration, 4.2s) ease-in-out var(--float-delay, 0s) infinite alternate;
+  }
+
+  .terminal-shell-body {
+    @apply border-t border-border/70 bg-background/30;
+  }
+
+  .terminal-shell-body * {
+    font-family: "JetBrains Mono", "Cascadia Code", monospace;
+  }
+
+  .terminal-module {
+    @apply px-5 pb-8 pt-4 md:px-8 md:pb-10;
+  }
+
+  .terminal-module-header {
+    @apply mb-5;
+  }
+
+  .terminal-module-title {
+    @apply text-2xl font-semibold text-foreground md:text-3xl;
+  }
+
+  .terminal-output {
+    @apply rounded-lg border border-border/80 bg-background/45 p-4;
+  }
+
+  .terminal-command {
+    @apply font-mono text-xs leading-6;
+  }
+
+  .terminal-prompt {
+    @apply mr-2 text-emerald-300;
+  }
+
+  .terminal-cmd {
+    @apply text-cyan-300;
+  }
+
+  .terminal-exec {
+    @apply border-b border-border/70;
+  }
+
+  .terminal-exec:last-child {
+    border-bottom: none;
+  }
+
+  .exec-command {
+    @apply mx-5 mt-5 inline-block whitespace-nowrap font-mono text-xs;
+    overflow: hidden;
+    width: 0;
+  }
+
+  .exec-command .terminal-prompt {
+    @apply mr-2 text-emerald-300;
+  }
+
+  .exec-command .terminal-cmd {
+    @apply text-cyan-300;
+  }
+
+  .exec-command .terminal-args {
+    @apply text-amber-100/90;
+  }
+
+  [data-reveal].is-visible .exec-command {
+    animation:
+      command-typing 900ms steps(var(--cmd-chars, 24), end) forwards,
+      command-caret 1s steps(1, end) infinite;
+  }
+
   [data-reveal] {
     opacity: 0;
     transform: translateY(18px);
@@ -160,15 +269,152 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* CRT & Theme Enhancements */
+  .crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.1) 50%),
+      linear-gradient(90deg,
+        rgba(255, 0, 0, 0.03),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.03));
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .crt-flicker {
+    animation: crt-flicker 0.15s infinite;
+  }
+
+  .hypr-glow {
+    box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.15);
+  }
+
+  .tui-border {
+    @apply border border-primary/20 bg-background/60 backdrop-blur-sm;
+    box-shadow: inset 0 0 15px hsl(var(--primary) / 0.05);
+  }
+
+  .glitch-text:hover {
+    animation: glitch 300ms infinite;
+  }
+
+  /* Secret Antigravity Mode */
+  .antigravity-mode {
+    animation: antigravity-float 10s ease-in-out infinite;
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
 }
 
 @keyframes caret-blink {
+
   0%,
   49% {
     opacity: 1;
   }
+
   50%,
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes command-typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: calc(var(--cmd-chars, 24) * 0.62rem);
+  }
+}
+
+@keyframes command-caret {
+
+  0%,
+  49% {
+    box-shadow: inset -1px 0 0 hsl(var(--primary));
+  }
+
+  50%,
+  100% {
+    box-shadow: inset -1px 0 0 transparent;
+  }
+}
+
+@keyframes random-float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate3d(var(--float-x, 6px), var(--float-y, -10px), 0) rotate(var(--float-rotate, 1.5deg));
+  }
+}
+
+@keyframes crt-flicker {
+  0% {
+    opacity: 0.98;
+  }
+
+  5% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.99;
+  }
+
+  15% {
+    opacity: 0.96;
+  }
+
+  20% {
+    opacity: 0.95;
+  }
+
+  25% {
+    opacity: 0.99;
+  }
+
+  30% {
+    opacity: 0.95;
+  }
+
+  /* ... simplified flicker ... */
+  100% {
+    opacity: 0.98;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
   }
 }
