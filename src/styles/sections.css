@@ -64,9 +64,9 @@
   gap: 8px;
 }
 
-.facts > div:not(.swatches) {
+.facts > div {
   display: grid;
-  grid-template-columns: 5.5rem minmax(0, 1fr);
+  grid-template-columns: 5rem minmax(0, 1fr);
   gap: 12px;
 }
 
@@ -87,218 +87,10 @@
   gap: 8px 20px;
 }
 
-/* ---------- home ---------- */
-.home-grid {
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  grid-template-areas:
-    "name name"
-    "fetch now";
-  grid-template-rows: auto 1fr;
-  min-height: calc(100svh - var(--waybar-h) - var(--gap) * 5);
-}
-
-.fetch {
-  grid-area: fetch;
-  justify-content: center;
-}
-
-.name {
-  grid-area: name;
-  justify-content: center;
-  container-type: inline-size;
-}
-
-.now {
-  grid-area: now;
-  align-self: start;
-}
-
-.fetch-body {
-  display: grid;
-  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 36px);
-  align-items: start;
-}
-
-.portrait {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 400 / 495;
-  object-fit: cover;
-  border-radius: calc(var(--radius) - 6px);
-  border: 1px solid rgb(var(--haze) / 0.3);
-  background: rgb(var(--surface));
-}
-
-.swatches {
-  display: flex;
-  gap: 4px;
-  margin-top: 8px;
-}
-
-.swatches i {
-  width: 28px;
-  height: 14px;
-  border-radius: 4px;
-  border: 1px solid rgb(var(--haze) / 0.25);
-}
-
-.lockup {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 0.32em;
-  /* sized from the window width so both words always fit on one line on desktop */
-  font-size: 10.4cqi;
-  font-weight: 700;
-  font-stretch: 112.5%;
-  letter-spacing: -0.02em;
-  line-height: 0.98;
-  overflow-wrap: anywhere;
-}
-
-.lockup span:last-of-type {
-  background: linear-gradient(90deg, rgb(var(--sky)), rgb(var(--sand)));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.tagline {
-  font-size: var(--step-1);
-  line-height: 1.5;
-  max-width: 44ch;
-}
-
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-.now-title {
-  font-size: var(--step-2) !important;
-}
-
-/* ---------- log ---------- */
-.log-grid,
-.stack-grid,
-.mail-grid {
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-  align-items: start;
-}
-
-.commits {
-  display: grid;
-  gap: 26px;
-  position: relative;
-}
-
-.commit {
-  position: relative;
-  display: grid;
-  grid-template-columns: 22px minmax(0, 1fr);
-  gap: 16px;
-}
-
-.commit::before {
-  /* the graph line */
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 22px;
-  bottom: -26px;
-  width: 2px;
-  background: linear-gradient(rgb(var(--sky) / 0.7), rgb(var(--sand) / 0.5));
-}
-
-.commit:last-child::before {
-  display: none;
-}
-
-.node {
-  position: relative;
-  z-index: 1;
-  width: 22px;
-  height: 22px;
-  margin-top: 2px;
-  border-radius: 50%;
-  border: 3px solid rgb(var(--sky));
-  background: rgb(var(--dusk));
-}
-
-.commit[data-kind="lead"] .node {
-  border-color: rgb(var(--sand));
-}
-
-.commit[data-kind="study"] .node {
-  border-style: dashed;
-}
-
-.commit-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 14px;
-  font-size: var(--step--1);
-  color: rgb(var(--haze));
-}
-
-.hash {
-  color: rgb(var(--sand));
-}
-
-.commit h3,
-.log-side h3,
-.stack-side h3,
-.work-more h3,
-.mail-info h3 {
-  font-size: var(--step-1);
-  line-height: 1.3;
-}
-
-.log-side,
-.stack-side,
-.mail-info {
-  position: sticky;
-  top: calc(var(--waybar-h) + var(--gap) * 3);
-}
-
-.log-side {
-  gap: 12px;
-}
-
-@media (max-width: 1023px) {
-  .log-side,
-  .stack-side,
-  .mail-info {
-    position: static;
-  }
-}
-
-/* ---------- work ---------- */
-.work-intro p {
-  max-width: 62ch;
-}
-
-.project {
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  align-items: stretch;
-}
-
-.project[data-flip="true"] .project-info {
-  order: 2;
-}
-
-.project h3 {
-  font-family: "Martian Mono Variable", ui-monospace, monospace;
-  font-size: var(--step-2);
-  line-height: 1.2;
 }
 
 .status {
@@ -334,33 +126,190 @@
   font-size: var(--step--1);
 }
 
-.project-device {
-  justify-content: center;
-  padding: 8px;
+.commit-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: var(--step--1);
+  color: rgb(var(--haze));
 }
 
-.work-more {
-  gap: 10px;
+.hash {
+  color: rgb(var(--sand));
 }
 
-/* ---------- stack ---------- */
+.more {
+  padding-top: 8px;
+  border-top: 1px solid rgb(var(--haze) / 0.2);
+  font-size: var(--step--1);
+}
+
+.act-title {
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ---------- acts: DOM text laid over the 3D world ---------- */
+main {
+  position: relative;
+  z-index: 1;
+  /* Let pointer events reach the canvas (drag devices); cards opt back in. */
+  pointer-events: none;
+}
+
+.card {
+  pointer-events: auto;
+  width: min(480px, calc(100vw - var(--gap) * 2));
+}
+
+.card h3 {
+  font-size: var(--step-1);
+  line-height: 1.3;
+}
+
+.act {
+  position: relative;
+  padding: calc(var(--waybar-h) + var(--gap) * 3) var(--gap) var(--gap);
+}
+
+.act:focus {
+  outline: none;
+}
+
+/* Home: the name lockup sits bottom-left over the desk */
+.act-home {
+  display: flex;
+  align-items: flex-end;
+  min-height: 125svh;
+  padding-bottom: 14svh;
+}
+
+.card-hero {
+  width: min(430px, calc(100vw - var(--gap) * 2));
+  container-type: inline-size;
+}
+
+.lockup {
+  display: flex;
+  flex-direction: column;
+  font-size: 14cqi;
+  font-weight: 700;
+  font-stretch: 112.5%;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.lockup span:last-of-type {
+  background: linear-gradient(90deg, rgb(var(--sky)), rgb(var(--sand)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+
+/* Dive: only a prompt; the camera does the work */
+.act-dive {
+  height: 130svh;
+}
+
+.dive-line {
+  position: sticky;
+  top: 74svh;
+  text-align: center;
+  font-size: var(--step-2);
+  color: rgb(var(--ink));
+  text-shadow: 0 0 24px rgb(var(--sky) / 0.8);
+}
+
+.prompt {
+  color: rgb(var(--sand));
+}
+
+/* Work: one station per project, card opposite the device */
+.act-work {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.station {
+  display: flex;
+  align-items: center;
+  min-height: 85svh;
+  padding: calc(var(--waybar-h) + var(--gap) * 2) clamp(12px, 5vw, 80px) var(--gap);
+}
+
+.station[data-side="right"] {
+  justify-content: flex-end;
+}
+
+.card-project {
+  width: min(470px, calc(100vw - var(--gap) * 2));
+}
+
+/* Log: commit cards follow the graph, bottom-left */
+.act-log {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.commit-slot {
+  display: flex;
+  align-items: flex-end;
+  min-height: 80svh;
+  padding: calc(var(--waybar-h) + var(--gap) * 2) clamp(12px, 5vw, 80px) 9svh;
+}
+
+.card-commit {
+  width: min(520px, calc(100vw - var(--gap) * 2));
+}
+
+/* Stack: a compact card stays put while the camera orbits the keys */
+.act-stack {
+  height: 220svh;
+}
+
+.card-stack {
+  position: sticky;
+  top: calc(var(--waybar-h) + var(--gap) * 3);
+  width: min(560px, calc(100vw - var(--gap) * 2));
+}
+
+.skills-list > summary {
+  cursor: pointer;
+  color: rgb(var(--sky));
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  /* nothing to collapse on larger screens */
+  .skills-list > summary {
+    display: none;
+  }
+}
+
 .tree {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  font-size: var(--step--1);
 }
 
 .tree-group h3 {
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   color: rgb(var(--sky));
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .tree-group li {
   display: grid;
-  grid-template-columns: 2.2em minmax(0, 1fr);
+  grid-template-columns: 2em minmax(0, 1fr);
   align-items: baseline;
-  padding: 2px 0;
 }
 
 .branch::before {
@@ -372,31 +321,36 @@
   content: "└─";
 }
 
-.used {
-  display: block;
-  grid-column: 2;
-  font-size: var(--step--1);
+/* Mail: the camera pulls back to the desk; form and details rest at the bottom */
+.act-mail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 150svh;
+  padding-bottom: calc(var(--gap) * 3);
 }
 
-/* ---------- crew ---------- */
-.crew-grid {
+.mail-cards {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 900px;
+  gap: var(--gap);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: end;
   width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.crew-list {
-  display: grid;
-  gap: 22px;
+.mail-cards .card {
+  width: auto;
 }
 
-.crew-list h3 {
-  font-size: var(--step-1);
+.colophon {
+  padding: 18px 12px 4px;
+  font-size: var(--step--1);
+  text-align: center;
+  pointer-events: auto;
 }
 
-/* ---------- mail ---------- */
 .form {
   display: grid;
   gap: 14px;
@@ -465,54 +419,98 @@
   color: #ff9d9d;
 }
 
-.mail-info .btn {
+.card-info .btn {
   align-self: flex-start;
 }
 
-.colophon {
-  padding: 18px 12px 4px;
-  font-size: var(--step--1);
-  text-align: center;
-  max-width: none;
-}
-
-/* ---------- responsive: monocle layout ---------- */
-@media (max-width: 1023px) {
-  .home-grid {
+/* ---------- phones: cards rest along the bottom, above the dot strip ---------- */
+@media (max-width: 767px) {
+  .act-home {
+    padding-bottom: calc(var(--waybar-h) + var(--gap) * 6);
+  }
+  .station,
+  .commit-slot {
+    align-items: flex-end;
+    justify-content: center !important;
+    padding-bottom: calc(var(--waybar-h) + var(--gap) * 5);
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+  }
+  .card,
+  .card-project,
+  .card-commit,
+  .card-hero {
+    width: 100%;
+  }
+  .card-stack {
+    top: auto;
+    bottom: calc(var(--waybar-h) + var(--gap) * 5);
+  }
+  .act-stack {
+    display: flex;
+    align-items: flex-end;
+  }
+  .act-mail {
+    padding-bottom: calc(var(--waybar-h) + var(--gap) * 5);
+  }
+  .mail-cards {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      "name"
-      "fetch"
-      "now";
-    grid-template-rows: auto;
-    min-height: 0;
-  }
-  .log-grid,
-  .stack-grid,
-  .mail-grid,
-  .project {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .project[data-flip="true"] .project-info {
-    order: 0;
-  }
-  .lockup {
-    font-size: 19cqi;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 560px) {
-  .fetch-body {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .portrait {
-    max-width: 200px;
   }
   .field-row {
     grid-template-columns: minmax(0, 1fr);
   }
-  .facts > div:not(.swatches) {
-    grid-template-columns: 4.6rem minmax(0, 1fr);
-  }
+}
+
+/* ---------- no WebGL: plain stacked content, nothing hidden ---------- */
+html.no-webgl main {
+  pointer-events: auto;
+}
+
+html.no-webgl .act,
+html.no-webgl .act-home,
+html.no-webgl .act-dive,
+html.no-webgl .act-stack,
+html.no-webgl .act-mail {
+  height: auto;
+  min-height: 0;
+}
+
+html.no-webgl .act-dive {
+  display: none;
+}
+
+html.no-webgl .station,
+html.no-webgl .commit-slot {
+  min-height: 0;
+  padding-top: var(--gap);
+  padding-bottom: var(--gap);
+}
+
+html.no-webgl .card-stack {
+  position: static;
+}
+
+html.no-webgl .card {
+  width: auto;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+html.no-webgl .card-hero {
+  /* inline-size containment collapses to 0 without an explicit width */
+  width: 100%;
+  max-width: 760px;
+}
+
+html.no-webgl .act-home {
+  justify-content: center;
+}
+
+html.no-webgl .mail-cards {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 760px;
+}
+
+html.no-webgl .mail-cards .card {
+  max-width: none;
 }

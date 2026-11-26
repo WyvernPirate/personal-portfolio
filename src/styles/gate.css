@@ -1,0 +1,142 @@
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(60% 50% at 50% 110%, rgb(var(--sand) / 0.16), transparent 70%),
+    radial-gradient(70% 60% at 50% -10%, rgb(var(--sky) / 0.18), transparent 70%),
+    #0c0b19;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s var(--ease-slide),
+    filter 0.6s ease;
+}
+
+.gate[data-leaving="true"] {
+  opacity: 0;
+  transform: scale(1.06);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.boot {
+  width: min(560px, calc(100vw - 32px));
+  font-size: var(--step--1);
+  line-height: 1.9;
+  color: rgb(var(--haze));
+}
+
+.boot p {
+  margin: 0;
+}
+
+.boot-ok {
+  color: #8fe0a8;
+}
+
+.boot-wait {
+  color: rgb(var(--sand));
+}
+
+.gate-skip {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid rgb(var(--haze) / 0.4);
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(var(--ink));
+  font: inherit;
+  cursor: pointer;
+}
+
+.lock {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 24px;
+  text-align: center;
+}
+
+.lock-clock {
+  font-size: clamp(3.5rem, 14vw, 7rem);
+  font-weight: 700;
+  font-stretch: 112.5%;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.lock-date {
+  margin-bottom: 28px;
+  color: rgb(var(--haze));
+}
+
+.lock-photo {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  border: 2px solid rgb(var(--sky));
+  box-shadow: 0 0 0 5px rgb(var(--sky) / 0.18);
+}
+
+.lock-user {
+  margin-top: 8px;
+  font-size: var(--step-1);
+}
+
+.lock-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: min(300px, 80vw);
+  height: 48px;
+  margin-top: 6px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 2px solid rgb(var(--sky) / 0.7);
+  background: rgb(var(--surface) / 0.8);
+  letter-spacing: 0.35em;
+  font-size: var(--step-1);
+}
+
+.lock-hint {
+  margin-top: 6px;
+  font-size: var(--step--1);
+  color: rgb(var(--haze));
+}
+
+.lock-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  margin-left: 4px;
+  background: rgb(var(--sand));
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}

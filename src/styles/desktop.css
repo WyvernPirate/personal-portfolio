@@ -1,27 +1,3 @@
-/* ---------- wallpaper ---------- */
-.wallpaper {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(60% 50% at 78% 105%, rgb(var(--sand) / 0.22), transparent 70%),
-    radial-gradient(70% 60% at 12% -10%, rgb(var(--sky) / 0.2), transparent 70%),
-    linear-gradient(180deg, rgb(var(--dusk)), #15142a);
-}
-
-.wallpaper canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-
-.wallpaper canvas[data-ready="true"] {
-  opacity: 1;
-}
-
 /* ---------- waybar ---------- */
 .waybar {
   position: fixed;
@@ -102,6 +78,8 @@
 }
 
 .waybar-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   height: 30px;
@@ -140,7 +118,11 @@
     min-width: 56px;
   }
   .waybar-right {
-    margin-left: 4px;
+    margin-left: 2px;
+    gap: 2px;
+  }
+  .waybar-btn {
+    padding: 0 8px;
   }
 }
 
@@ -154,33 +136,6 @@
   }
 }
 
-/* ---------- workspaces ---------- */
-.ws {
-  position: relative;
-  min-height: 100svh;
-  padding: calc(var(--waybar-h) + var(--gap) * 3) var(--gap) var(--gap);
-  overflow-x: clip;
-  scroll-margin-top: 0;
-}
-
-.ws-stage {
-  display: grid;
-  gap: var(--gap);
-  max-width: 1320px;
-  margin: 0 auto;
-}
-
-@media (max-width: 767px) {
-  .ws {
-    padding-top: var(--gap);
-    padding-bottom: calc(var(--waybar-h) + var(--gap) * 3 + env(safe-area-inset-bottom));
-    min-height: auto;
-  }
-  .ws:first-of-type {
-    min-height: 100svh;
-  }
-}
-
 /* ---------- windows ---------- */
 .win {
   position: relative;
@@ -191,7 +146,7 @@
   border-radius: var(--radius);
   /* Opaque enough to need no backdrop blur: blurring a dozen large panels over an
      animated canvas costs far more per frame than the effect is worth. */
-  background: rgb(var(--surface) / 0.9);
+  background: rgb(var(--surface) / 0.97);
   border: 1px solid rgb(var(--haze) / 0.22);
   min-width: 0;
 }
@@ -247,38 +202,6 @@
 
 .muted {
   color: rgb(var(--haze));
-}
-
-/* ---------- first-load popin (only when JS confirms motion is OK) ---------- */
-@keyframes popin {
-  from {
-    opacity: 0;
-    transform: scale(0.88) translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes widen {
-  from {
-    font-stretch: 75%;
-    letter-spacing: -0.04em;
-  }
-  to {
-    font-stretch: 112.5%;
-    letter-spacing: -0.02em;
-  }
-}
-
-.motion-ok #home .win {
-  animation: popin 0.7s var(--ease-popin) both;
-  animation-delay: calc(var(--i, 0) * 110ms + 120ms);
-}
-
-.motion-ok .lockup {
-  animation: widen 1.4s var(--ease-slide) 0.25s both;
 }
 
 /* ---------- scratchpad terminal ---------- */
@@ -356,4 +279,131 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---------- 3D world + HUD layers ---------- */
+.world {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #0c0b19;
+}
+
+.world canvas {
+  display: block;
+}
+
+.crt-lite {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.18) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 120% at 50% 50%, transparent 55%, rgb(0 0 0 / 0.55));
+}
+
+html.gate-open {
+  overflow: hidden;
+}
+
+html.no-webgl body {
+  background:
+    radial-gradient(60% 50% at 78% 105%, rgb(var(--sand) / 0.2), transparent 70%),
+    radial-gradient(70% 60% at 12% -10%, rgb(var(--sky) / 0.2), transparent 70%),
+    #13122a;
+}
+
+.waybar-uptime {
+  color: rgb(var(--haze));
+  font-variant-numeric: tabular-nums;
+  padding: 0 6px;
+}
+
+@media (max-width: 767px) {
+  .waybar-uptime {
+    display: none;
+  }
+}
+
+/* ---------- custom cursor (fine pointers only) ---------- */
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 300;
+  display: none;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+html.has-cursor .cursor {
+  display: block;
+}
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+.cursor::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(var(--sand));
+  transition:
+    width 0.22s var(--ease-popin),
+    height 0.22s var(--ease-popin),
+    left 0.22s var(--ease-popin),
+    top 0.22s var(--ease-popin),
+    background-color 0.2s,
+    border-radius 0.2s;
+}
+
+.cursor[data-mode="link"]::before {
+  left: -20px;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  background: rgb(var(--sky) / 0.3);
+  box-shadow: 0 0 0 2px rgb(var(--sky));
+}
+
+.cursor[data-mode="drag"]::before {
+  left: -34px;
+  top: -34px;
+  width: 68px;
+  height: 68px;
+  background: rgb(var(--sand) / 0.18);
+  box-shadow: 0 0 0 2px rgb(var(--sand));
+}
+
+.cursor[data-mode="press"]::before {
+  left: -24px;
+  top: -24px;
+  width: 48px;
+  height: 48px;
+  background: rgb(var(--sand) / 0.45);
+}
+
+.cursor[data-mode="text"]::before {
+  left: -1px;
+  top: -12px;
+  width: 2px;
+  height: 24px;
+  border-radius: 2px;
+  background: rgb(var(--sky));
+}
+
+.cursor-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: rgb(var(--ink));
 }
