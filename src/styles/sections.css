@@ -1,0 +1,516 @@
+/* ---------- shared bits ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--haze) / 0.5);
+  background: transparent;
+  color: rgb(var(--ink));
+  font: 600 var(--step-0) "Atkinson Hyperlegible Next Variable", system-ui, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    transform 0.2s var(--ease-popin);
+}
+
+.btn:hover {
+  border-color: rgb(var(--sky));
+  color: rgb(var(--ink));
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, rgb(var(--sky)), rgb(var(--sand)));
+  color: rgb(var(--dusk));
+}
+
+.btn-primary:hover {
+  color: rgb(var(--dusk));
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.bullets {
+  display: grid;
+  gap: 6px;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 2px;
+  background: rgb(var(--sand));
+}
+
+.facts {
+  display: grid;
+  gap: 8px;
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 12px;
+}
+
+.facts dt {
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+  font-size: var(--step--1);
+  color: rgb(var(--sand));
+  padding-top: 0.15em;
+}
+
+.facts dd {
+  overflow-wrap: anywhere;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.status {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 2px 12px;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--haze) / 0.4);
+  font-size: var(--step--1);
+  color: rgb(var(--haze));
+}
+
+.status[data-status="live"] {
+  border-color: rgb(111 208 140 / 0.6);
+  color: #8fe0a8;
+}
+
+.status[data-status="hackathon"] {
+  border-color: rgb(var(--sand) / 0.7);
+  color: rgb(var(--sand));
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chips li {
+  padding: 2px 10px;
+  border-radius: 8px;
+  background: rgb(var(--haze) / 0.14);
+  font-size: var(--step--1);
+}
+
+.commit-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: var(--step--1);
+  color: rgb(var(--haze));
+}
+
+.hash {
+  color: rgb(var(--sand));
+}
+
+.more {
+  padding-top: 8px;
+  border-top: 1px solid rgb(var(--haze) / 0.2);
+  font-size: var(--step--1);
+}
+
+.act-title {
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ---------- acts: DOM text laid over the 3D world ---------- */
+main {
+  position: relative;
+  z-index: 1;
+  /* Let pointer events reach the canvas (drag devices); cards opt back in. */
+  pointer-events: none;
+}
+
+.card {
+  pointer-events: auto;
+  width: min(480px, calc(100vw - var(--gap) * 2));
+}
+
+.card h3 {
+  font-size: var(--step-1);
+  line-height: 1.3;
+}
+
+.act {
+  position: relative;
+  padding: calc(var(--waybar-h) + var(--gap) * 3) var(--gap) var(--gap);
+}
+
+.act:focus {
+  outline: none;
+}
+
+/* Home: the name lockup sits bottom-left over the desk */
+.act-home {
+  display: flex;
+  align-items: flex-end;
+  min-height: 125svh;
+  padding-bottom: 14svh;
+}
+
+.card-hero {
+  width: min(430px, calc(100vw - var(--gap) * 2));
+  container-type: inline-size;
+}
+
+.lockup {
+  display: flex;
+  flex-direction: column;
+  font-size: 14cqi;
+  font-weight: 700;
+  font-stretch: 112.5%;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.lockup span:last-of-type {
+  background: linear-gradient(90deg, rgb(var(--sky)), rgb(var(--sand)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+
+/* Dive: only a prompt; the camera does the work */
+.act-dive {
+  height: 130svh;
+}
+
+.dive-line {
+  position: sticky;
+  top: 74svh;
+  text-align: center;
+  font-size: var(--step-2);
+  color: rgb(var(--ink));
+  text-shadow: 0 0 24px rgb(var(--sky) / 0.8);
+}
+
+.prompt {
+  color: rgb(var(--sand));
+}
+
+/* Work: one station per project, card opposite the device */
+.act-work {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.station {
+  display: flex;
+  align-items: center;
+  min-height: 85svh;
+  padding: calc(var(--waybar-h) + var(--gap) * 2) clamp(12px, 5vw, 80px) var(--gap);
+}
+
+.station[data-side="right"] {
+  justify-content: flex-end;
+}
+
+.card-project {
+  width: min(470px, calc(100vw - var(--gap) * 2));
+}
+
+/* Log: commit cards follow the graph, bottom-left */
+.act-log {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.commit-slot {
+  display: flex;
+  align-items: flex-end;
+  min-height: 80svh;
+  padding: calc(var(--waybar-h) + var(--gap) * 2) clamp(12px, 5vw, 80px) 9svh;
+}
+
+.card-commit {
+  width: min(520px, calc(100vw - var(--gap) * 2));
+}
+
+/* Stack: a compact card stays put while the camera orbits the keys */
+.act-stack {
+  height: 220svh;
+}
+
+.card-stack {
+  position: sticky;
+  top: calc(var(--waybar-h) + var(--gap) * 3);
+  width: min(560px, calc(100vw - var(--gap) * 2));
+}
+
+.skills-list > summary {
+  cursor: pointer;
+  color: rgb(var(--sky));
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  /* nothing to collapse on larger screens */
+  .skills-list > summary {
+    display: none;
+  }
+}
+
+.tree {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  font-size: var(--step--1);
+}
+
+.tree-group h3 {
+  font-size: var(--step--1);
+  color: rgb(var(--sky));
+  margin-bottom: 4px;
+}
+
+.tree-group li {
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr);
+  align-items: baseline;
+}
+
+.branch::before {
+  content: "├─";
+  color: rgb(var(--haze) / 0.6);
+}
+
+.tree-group li:last-child .branch::before {
+  content: "└─";
+}
+
+/* Mail: the camera pulls back to the desk; form and details rest at the bottom */
+.act-mail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 150svh;
+  padding-bottom: calc(var(--gap) * 3);
+}
+
+.mail-cards {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: end;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.mail-cards .card {
+  width: auto;
+}
+
+.colophon {
+  padding: 18px 12px 4px;
+  font-size: var(--step--1);
+  text-align: center;
+  pointer-events: auto;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.field-row {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form label {
+  display: grid;
+  gap: 6px;
+}
+
+.form label > span {
+  font-size: var(--step--1);
+  color: rgb(var(--haze));
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgb(var(--haze) / 0.35);
+  background: rgb(var(--dusk) / 0.6);
+  color: rgb(var(--ink));
+  font: inherit;
+  resize: vertical;
+}
+
+.form input:focus-visible,
+.form textarea:focus-visible {
+  outline-offset: 1px;
+  border-color: rgb(var(--sky));
+}
+
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+}
+
+.form-status {
+  font-size: var(--step--1);
+  min-height: 1.2em;
+}
+
+.form-status[data-kind="ok"] {
+  color: #8fe0a8;
+}
+
+.form-status[data-kind="error"] {
+  color: #ff9d9d;
+}
+
+.card-info .btn {
+  align-self: flex-start;
+}
+
+/* ---------- phones: cards rest along the bottom, above the dot strip ---------- */
+@media (max-width: 767px) {
+  .act-home {
+    padding-bottom: calc(var(--waybar-h) + var(--gap) * 6);
+  }
+  .station,
+  .commit-slot {
+    align-items: flex-end;
+    justify-content: center !important;
+    padding-bottom: calc(var(--waybar-h) + var(--gap) * 5);
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+  }
+  .card,
+  .card-project,
+  .card-commit,
+  .card-hero {
+    width: 100%;
+  }
+  .card-stack {
+    top: auto;
+    bottom: calc(var(--waybar-h) + var(--gap) * 5);
+  }
+  .act-stack {
+    display: flex;
+    align-items: flex-end;
+  }
+  .act-mail {
+    padding-bottom: calc(var(--waybar-h) + var(--gap) * 5);
+  }
+  .mail-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- no WebGL: plain stacked content, nothing hidden ---------- */
+html.no-webgl main {
+  pointer-events: auto;
+}
+
+html.no-webgl .act,
+html.no-webgl .act-home,
+html.no-webgl .act-dive,
+html.no-webgl .act-stack,
+html.no-webgl .act-mail {
+  height: auto;
+  min-height: 0;
+}
+
+html.no-webgl .act-dive {
+  display: none;
+}
+
+html.no-webgl .station,
+html.no-webgl .commit-slot {
+  min-height: 0;
+  padding-top: var(--gap);
+  padding-bottom: var(--gap);
+}
+
+html.no-webgl .card-stack {
+  position: static;
+}
+
+html.no-webgl .card {
+  width: auto;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+html.no-webgl .card-hero {
+  /* inline-size containment collapses to 0 without an explicit width */
+  width: 100%;
+  max-width: 760px;
+}
+
+html.no-webgl .act-home {
+  justify-content: center;
+}
+
+html.no-webgl .mail-cards {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 760px;
+}
+
+html.no-webgl .mail-cards .card {
+  max-width: none;
+}

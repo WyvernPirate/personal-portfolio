@@ -1,0 +1,409 @@
+/* ---------- waybar ---------- */
+.waybar {
+  position: fixed;
+  z-index: 50;
+  top: var(--gap);
+  left: var(--gap);
+  right: var(--gap);
+  height: var(--waybar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 8px;
+  border-radius: var(--radius);
+  background: rgb(var(--surface) / 0.78);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgb(var(--haze) / 0.22);
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+  font-size: var(--step--1);
+}
+
+.waybar nav,
+.waybar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ws-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: rgb(var(--haze));
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    min-width 0.35s var(--ease-popin),
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.ws-pill:hover {
+  background: rgb(var(--haze) / 0.16);
+  color: rgb(var(--ink));
+}
+
+.ws-pill[aria-current="true"] {
+  min-width: 72px;
+  background: linear-gradient(135deg, rgb(var(--sky)), rgb(var(--sand)));
+  color: rgb(var(--dusk));
+  font-weight: 700;
+}
+
+.waybar-clock {
+  color: rgb(var(--ink));
+  font-variant-numeric: tabular-nums;
+}
+
+.waybar-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgb(var(--ink));
+}
+
+.waybar-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6fd08c;
+  box-shadow: 0 0 0 3px rgb(111 208 140 / 0.2);
+}
+
+.waybar-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(var(--ink));
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.waybar-btn:hover {
+  background: rgb(var(--haze) / 0.16);
+  color: rgb(var(--sand));
+}
+
+@media (max-width: 767px) {
+  /* monocle layout: waybar sits at the bottom as a dot strip */
+  .waybar {
+    top: auto;
+    bottom: calc(var(--gap) + env(safe-area-inset-bottom));
+    justify-content: center;
+  }
+  .waybar-clock,
+  .waybar-status,
+  .waybar-cv {
+    display: none;
+  }
+  .ws-pill {
+    min-width: 30px;
+    padding: 0 8px;
+  }
+  .ws-pill[aria-current="true"] {
+    min-width: 56px;
+  }
+  .waybar-right {
+    margin-left: 2px;
+    gap: 2px;
+  }
+  .waybar-btn {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ws-pill {
+    min-width: 26px;
+    padding: 0 6px;
+  }
+  .ws-pill[aria-current="true"] {
+    min-width: 50px;
+  }
+}
+
+/* ---------- windows ---------- */
+.win {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(18px, 2.4vw, 30px);
+  border-radius: var(--radius);
+  /* Opaque enough to need no backdrop blur: blurring a dozen large panels over an
+     animated canvas costs far more per frame than the effect is worth. */
+  background: rgb(var(--surface) / 0.97);
+  border: 1px solid rgb(var(--haze) / 0.22);
+  min-width: 0;
+}
+
+/* Hyprland-style gradient border for the focused window */
+.win::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgb(var(--sky)), rgb(var(--sand)));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+
+.win[data-primary="true"]::before,
+.win:hover::before,
+.win:focus-within::before {
+  opacity: 1;
+}
+
+.win-id {
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+  font-size: var(--step--1);
+  color: rgb(var(--haze));
+}
+
+.win-id b {
+  color: rgb(var(--sand));
+  font-weight: 600;
+}
+
+.win h2 {
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.win p,
+.win li {
+  max-width: 68ch;
+}
+
+.muted {
+  color: rgb(var(--haze));
+}
+
+/* ---------- scratchpad terminal ---------- */
+.scratchpad {
+  position: fixed;
+  z-index: 60;
+  top: calc(var(--waybar-h) + var(--gap) * 2);
+  left: 50%;
+  width: min(760px, calc(100vw - var(--gap) * 2));
+  transform: translate(-50%, -140%);
+  visibility: hidden;
+  border-radius: var(--radius);
+  background: rgb(14 13 28 / 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgb(var(--sky) / 0.5);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.5);
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+  font-size: var(--step--1);
+  transition:
+    transform 0.45s var(--ease-slide),
+    visibility 0s 0.45s;
+}
+
+.scratchpad[data-open="true"] {
+  transform: translate(-50%, 0);
+  visibility: visible;
+  transition:
+    transform 0.45s var(--ease-slide),
+    visibility 0s;
+}
+
+@media (max-width: 767px) {
+  .scratchpad {
+    top: var(--gap);
+  }
+}
+
+.scratchpad-log {
+  max-height: min(46svh, 360px);
+  overflow-y: auto;
+  padding: 16px 18px 4px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+
+.scratchpad-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 18px 16px;
+}
+
+.scratchpad-row input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  color: rgb(var(--ink));
+  font: inherit;
+  outline: none;
+}
+
+.prompt {
+  color: rgb(var(--sand));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 3D world + HUD layers ---------- */
+.world {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #0c0b19;
+}
+
+.world canvas {
+  display: block;
+}
+
+.crt-lite {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.18) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 120% at 50% 50%, transparent 55%, rgb(0 0 0 / 0.55));
+}
+
+html.gate-open {
+  overflow: hidden;
+}
+
+html.no-webgl body {
+  background:
+    radial-gradient(60% 50% at 78% 105%, rgb(var(--sand) / 0.2), transparent 70%),
+    radial-gradient(70% 60% at 12% -10%, rgb(var(--sky) / 0.2), transparent 70%),
+    #13122a;
+}
+
+.waybar-uptime {
+  color: rgb(var(--haze));
+  font-variant-numeric: tabular-nums;
+  padding: 0 6px;
+}
+
+@media (max-width: 767px) {
+  .waybar-uptime {
+    display: none;
+  }
+}
+
+/* ---------- custom cursor (fine pointers only) ---------- */
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 300;
+  display: none;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+html.has-cursor .cursor {
+  display: block;
+}
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+.cursor::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(var(--sand));
+  transition:
+    width 0.22s var(--ease-popin),
+    height 0.22s var(--ease-popin),
+    left 0.22s var(--ease-popin),
+    top 0.22s var(--ease-popin),
+    background-color 0.2s,
+    border-radius 0.2s;
+}
+
+.cursor[data-mode="link"]::before {
+  left: -20px;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  background: rgb(var(--sky) / 0.3);
+  box-shadow: 0 0 0 2px rgb(var(--sky));
+}
+
+.cursor[data-mode="drag"]::before {
+  left: -34px;
+  top: -34px;
+  width: 68px;
+  height: 68px;
+  background: rgb(var(--sand) / 0.18);
+  box-shadow: 0 0 0 2px rgb(var(--sand));
+}
+
+.cursor[data-mode="press"]::before {
+  left: -24px;
+  top: -24px;
+  width: 48px;
+  height: 48px;
+  background: rgb(var(--sand) / 0.45);
+}
+
+.cursor[data-mode="text"]::before {
+  left: -1px;
+  top: -12px;
+  width: 2px;
+  height: 24px;
+  border-radius: 2px;
+  background: rgb(var(--sky));
+}
+
+.cursor-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: rgb(var(--ink));
+}
