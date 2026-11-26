@@ -51,7 +51,7 @@ export default function Scratchpad({ open, onClose }: ScratchpadProps) {
       case "ws": {
         const arg = args[0];
         const target = workspaces.find((w, i) => String(i + 1) === arg || w.id === arg || w.label === arg);
-        if (!target) return ["usage: ws <1-6|home|log|work|stack|crew|mail>"];
+        if (!target) return ["usage: ws <1-6|home|dive|work|log|stack|mail>"];
         scrollToWorkspace(target.id);
         return [`switching to workspace ${workspaces.indexOf(target) + 1} (${target.label})`];
       }
