@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-11-26T12:44:43.560Z",
+  "publicRepos": 26,
+  "languages": [
+    {
+      "name": "Java",
+      "count": 7
+    },
+    {
+      "name": "TypeScript",
+      "count": 4
+    },
+    {
+      "name": "Kotlin",
+      "count": 1
+    },
+    {
+      "name": "C",
+      "count": 1
+    },
+    {
+      "name": "C++",
+      "count": 1
+    },
+    {
+      "name": "Dart",
+      "count": 1
+    },
+    {
+      "name": "HTML",
+      "count": 1
+    },
+    {
+      "name": "Python",
+      "count": 1
+    }
+  ]
+}

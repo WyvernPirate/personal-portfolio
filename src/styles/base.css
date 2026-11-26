@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dusk: 27 26 46;
+  --surface: 36 34 58;
+  --ink: 236 234 244;
+  --haze: 156 153 180;
+  --sky: 117 170 219;
+  --sand: 227 168 105;
+
+  /* From the real Hyprland config: rounding = 22, gaps_out = 5 */
+  --radius: 22px;
+  --gap: 5px;
+  --waybar-h: 44px;
+
+  /* End4-style overshoot used for window popin */
+  --ease-popin: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-slide: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* 1.25 type scale */
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+  --step-5: clamp(2.441rem, 6vw + 0.5rem, 3.815rem);
+  --step-6: clamp(3rem, 11vw, 7.5rem);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --radius: 16px;
+  }
+}
+
+html {
+  background: rgb(var(--dusk));
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  color: rgb(var(--ink));
+  font-family: "Atkinson Hyperlegible Next Variable", system-ui, sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: rgb(var(--sky));
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: rgb(var(--sand));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--sky));
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: rgb(var(--sky) / 0.35);
+}
+
+.mono {
+  font-family: "Martian Mono Variable", ui-monospace, monospace;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: -80px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgb(var(--sand));
+  color: rgb(var(--dusk));
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.15s;
+}
+
+.skip-link:focus {
+  top: 12px;
+  color: rgb(var(--dusk));
+}
