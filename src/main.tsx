@@ -4,7 +4,7 @@ import "@fontsource-variable/atkinson-hyperlegible-next/index.css";
 import "./styles/base.css";
 import "./styles/desktop.css";
 import "./styles/sections.css";
-import "./styles/mockups.css";
+import "./styles/gate.css";
 import { initMotionFlag } from "./lib/motion";
 import App from "./App";
 
