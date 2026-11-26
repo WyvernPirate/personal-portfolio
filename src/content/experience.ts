@@ -67,6 +67,7 @@ export const experience: LogEntry[] = [
     kind: "study",
     bullets: [
       "Final-year project: a real-time sentiment analysis platform for Botswana's socio-political discourse.",
+      "BGCSE Grade A at Maun Senior Secondary School before it (2020 – 2021).",
       "Lead developer of a 3rd-place entry at the ISACA Gaborone Chapter Hackathon (Nov 2024).",
     ],
   },

@@ -22,12 +22,13 @@ export const profile = {
   site: "https://phemelo.work",
 } as const;
 
+// Acts of the scroll journey, in order. `id` is also the DOM id of the matching section.
 export const workspaces = [
   { id: "home", label: "~", title: "Home" },
-  { id: "log", label: "log", title: "Experience" },
+  { id: "dive", label: "dive", title: "Dive" },
   { id: "work", label: "work", title: "Projects" },
+  { id: "log", label: "log", title: "Experience" },
   { id: "stack", label: "stack", title: "Skills" },
-  { id: "crew", label: "crew", title: "Leadership" },
   { id: "mail", label: "mail", title: "Contact" },
 ] as const;
 
