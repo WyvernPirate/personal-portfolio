@@ -103,7 +103,7 @@ export default function ContactForm() {
       </label>
       <label>
         <span>Message</span>
-        <textarea name="message" rows={5} required maxLength={3000} />
+        <textarea name="message" rows={3} required maxLength={3000} />
       </label>
       {/* Honeypot, hidden from people and assistive tech */}
       <div className="hp" aria-hidden="true">
